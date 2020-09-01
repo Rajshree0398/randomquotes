@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<head> 
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Random Quote Machine</title>
+
+
+
+<style>
+body{
+	background-color: teal;
+}
+
+.fa {
+  padding: 5px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 2px 2px;
+}
+.fa:hover {
+    opacity: 0.7;
+}
+
+	.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+</style>
+
+	<script>		
+const QUOTE_COLL=[
+{quote:"“You only have one life, and if it is not going in the direction you want it to, now is the time to make changes.” ",
+author:"– Joyce Meyer"},
+{
+quote:"“Success isn’t easy, and that’s a good thing – at least in business. If it was easy, everybody would be doing it and your competition would be outrageous!”",
+author:" – David Fairweather"
+},
+{
+quote:"“Great thoughts speak only to the thoughtful mind, but great actions speak to all mankind.” ",
+author:"—Theodore Roosevelt"	
+},
+{
+quote:"“Inspiration is a message from your unconscious wisdom telling you to go out there and be the fullest, most positive expression of you who you REALLY are.” ",
+author:"– Paul Dalton"
+},
+{
+quote:"“But one of the big lessons I have learned from my journey is you can’t please everyone, so don’t try.”",
+author:"― Chris Colfer"
+}
+];
+
+
+		function generate()
+		{
+
+          
+			let size=QUOTE_COLL.length;
+			let i=Math.floor(Math.random()*size);
+			var newquote=QUOTE_COLL[i].quote;
+			var newauthor=QUOTE_COLL[i].author;
+          document.getElementById("text").innerHTML=newquote;
+          document.getElementById("author").innerHTML=newauthor;
+
+          let quotelink=newquote.replace(/ /g,"%20");
+          let authorlink=newauthor.replace(/ /,"%20");
+
+
+var twitterlink="https://twitter.com/intent/tweet?&text="
+twitterlink+=quotelink;
+twitterlink+=" - " + authorlink;
+     document.getElementById("tweet-quote").href = twitterlink;
+
+      }
+
+
+      function random_bg_color() {
+    var x = Math.floor(Math.random() * 256);
+    var y = Math.floor(Math.random() * 256);
+    var z = Math.floor(Math.random() * 256);
+    var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+ console.log(bgColor);
+  
+    document.body.style.background = bgColor;
+    }
+
+	</script>
+
+</head>
+<body onload="generate()">
+	
+	<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+<h1>RANDOM QUOTE GENERATOR</h1>
+<div class="container">
+	<div class="row py-5">
+		<div class="col-md-6 offset-md-2">
+	<wrapper id="quote-box">
+
+
+<div class="card">
+
+
+  <div class="card-body">
+    <h5 class="card-title"><div id="text"></div><br></h5>
+    <p class="card-text" text="center"><div id="author"></div><br></p>
+    
+ 
+
+
+		
+       <a href="href="#" class="btn btn-primary fa fa-twitter"  id="tweet-quote" title="Tweet this quote!" target="_blank"></a>
+
+
+       <button id="new-quote" class="btn btn-primary" style="" onClick="generate();random_bg_color();">New Quote</button>
+
+         </div>
+</div>
+
+	</wrapper>
+</div>
+</div>
+</div>
+</body>
+</html>
